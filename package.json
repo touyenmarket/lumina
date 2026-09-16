@@ -1,0 +1,10 @@
+{
+  "name": "lumina",
+  "version": "0.1.0",
+  "private": true,
+  "description": "LUMINA — Tournez un livre, diffusez un film. Prototype d'interface PWA.",
+  "scripts": {
+    "dev": "python3 -m http.server 3000",
+    "start": "python3 -m http.server 3000"
+  }
+}
