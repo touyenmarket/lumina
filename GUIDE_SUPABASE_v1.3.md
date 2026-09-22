@@ -163,4 +163,4 @@ C'est exactement le modèle utilisé par Supabase en production. **La seule clé
 
 ---
 
-*LUMINA v1.3 — 22 septembre 2026 — 83/83 contrôles automatiques au vert*
+*LUMINA v1.3.1 — 22 septembre 2026 — 83/83 contrôles automatiques au vert*

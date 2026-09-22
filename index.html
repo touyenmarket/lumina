@@ -527,6 +527,7 @@
   .stats-box b{font-size:18px; display:block;}
   .stats-box span{font-size:10px; color:var(--muted); letter-spacing:0.5px; font-weight:700;}
 
+#bottomTools{display:none;}
 #bottomTools.on{display:block;}
 
   /* === FIX NAV v37 — toujours visible === */
@@ -705,8 +706,8 @@
           <div class="poster" data-book="Notre-Dame de Paris" onclick="selectBook(this)"><img class="cover" src="../covers/monte_cristo.jpg" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxODAiIGhlaWdodD0iMjQwIiB2aWV3Qm94PSIwIDAgMTgwIDI0MCI+CiAgPHJlY3Qgd2lkdGg9IjE4MCIgaGVpZ2h0PSIyNDAiIHJ4PSIxMCIgZmlsbD0iIzhlNDRhZCIvPgogIDxyZWN0IHg9IjEwIiB5PSIxMCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIxNjAiIHJ4PSI4IiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC4xMiIvPgogIDx0ZXh0IHg9IjkwIiB5PSI5NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0id2hpdGUiPk88L3RleHQ+CiAgPHRleHQgeD0iOTAiIHk9IjE4NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI4LjUiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IndoaXRlIj5Pcmd1ZWlsIGV0IFByw6lqdWfDqXM8L3RleHQ+CiAgPHRleHQgeD0iOTAiIHk9IjIwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI2IiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC44NSI+QXVzdGVuPC90ZXh0PgogIDx0ZXh0IHg9IjkwIiB5PSIyMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWkiIGZvbnQtc2l6ZT0iNSIgZmlsbD0id2hpdGUiIG9wYWNpdHk9IjAuNiI+ZG9tYWluZSBwdWJsaWM8L3RleHQ+Cjwvc3ZnPg=='" alt="Notre-Dame de Paris"><div class="cap">Notre-Dame de Paris</div></div>
         </div>
                 
-        <div class="row" style="margin-top:16px;"><h2 data-i18n="nav.tools">Outils</h2><span class="link" onclick="toggleBottomTools()" style="cursor:pointer;">Afficher ›</span></div>
-        <div id="bottomTools" style="display:none;">
+        <div class="row" style="margin-top:16px;"><h2 data-i18n="nav.tools">Outils</h2><span class="link" id="btLink" onclick="toggleBottomTools()" style="cursor:pointer;">Afficher ›</span></div>
+        <div id="bottomTools">
 <div class="stats-card" id="statsCard">
           <div style="display:flex; align-items:center; justify-content:space-between;">
             <div style="font-weight:800; font-size:12px;">📊 Ton tableau de bord <span style="font-weight:400; color:var(--muted); font-size:11px;">· 0€ en local</span></div>
@@ -720,7 +721,7 @@
           </div>
           <div style="margin-top:8px; background:var(--bg2); border:1px dashed var(--line); border-radius:8px; padding:8px 10px; font-size:11px; color:var(--muted); text-align:center; line-height:1.4;" id="statDetail">Ajoute un ♡ ou une note pour voir tes stats.</div>
         </div>
-        <div style="text-align:center; margin-top:10px; padding:6px;"><span class="verTag">LUMINA <b id="verTag">v1.3</b> · démo · 0 € engagé</span></div>
+        <div style="text-align:center; margin-top:10px; padding:6px;"><span class="verTag">LUMINA <b id="verTag">v1.3.1</b> · démo · 0 € engagé</span></div>
           <div class="card" id="accountCard" style="margin-top:10px; border-color:var(--accent);">
             <div style="display:flex; gap:8px; align-items:center;">
               <div style="width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,var(--accent),#f2cd74); display:flex; align-items:center; justify-content:center; font-size:16px; flex:0 0 auto;">☁️</div>
