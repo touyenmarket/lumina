@@ -132,7 +132,16 @@ create trigger films_quota_check
 -- 5. VUE DE SUIVI — surveiller la consommation globale
 --    À consulter régulièrement : le palier gratuit offre 1 Go.
 -- ------------------------------------------------------------
-create or replace view public.storage_usage as
+-- ⚠️ security_invoker = true : la vue applique les règles RLS de
+--    la personne qui la consulte, au lieu de celles de son créateur.
+--    Sans cette option, Supabase affiche « UNRESTRICTED » et n'importe
+--    quel utilisateur connecté verrait les totaux de TOUT LE MONDE.
+--    Avec elle, chacun ne voit que sa propre consommation.
+drop view if exists public.storage_usage;
+
+create view public.storage_usage
+  with (security_invoker = true)
+as
   select
     count(*)                                     as nb_fichiers,
     count(distinct user_id)                      as nb_utilisateurs,
@@ -141,6 +150,10 @@ create or replace view public.storage_usage as
   from public.films;
 
 grant select on public.storage_usage to authenticated;
+
+-- 👉 Vous, propriétaire du projet, gardez la vision globale via le
+--    SQL Editor (rôle postgres), qui n'est pas soumis aux règles RLS :
+--       select count(*), pg_size_pretty(sum(size)) from public.films;
 
 
 -- ------------------------------------------------------------

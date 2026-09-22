@@ -4,10 +4,26 @@
 
 Application PWA de LUMINA — votre roman devient un film, dans le style de votre choix.
 
-> **Version `v1.4`** — 22 septembre 2026
+> **Version `v1.4.2`** — 22 septembre 2026
 > 100 % statique : HTML / CSS / JS purs. **Aucune dépendance, aucun build.**
 > **Backend optionnel** : comptes et synchronisation multi-appareils via Supabase (palier gratuit). Sans configuration, l'app reste intégralement locale et hors-ligne.
 > Le moteur de génération d'images n'est pas encore branché.
+
+---
+
+## 🔧 Correctif v1.4.2
+
+Plus jamais de message technique à l'écran : les erreurs d'authentification sont traduites
+(« 🔐 Session expirée — reconnectez-vous »), une panne de réseau ne déconnecte plus,
+le pied de page affiche **`v1.4.2 · jeton auto`** pour prouver que le correctif tourne.
+Contient aussi la réparation du retour du **lien de connexion par e-mail** (la connexion
+n'aboutissait pas après le clic).
+**À faire** : remplacer `app.js`, `index.html` et `sw.js` sur GitHub, puis recharger deux fois.
+Voir `CORRECTIF_v1.4.2.md`.
+
+### Historique des correctifs
+- **v1.4.1** — renouvellement automatique du jeton (erreur « JWT expired » après 1 h)
+  + protection de la vue `storage_usage` (`correctif-vue-v1.4.1.sql`, déjà exécuté).
 
 ---
 
@@ -193,7 +209,7 @@ L'installation PWA (bouton 📲) et le service worker exigent le **HTTPS**. Verc
 À chaque modification de `index.html` ou `app.js`, **incrémentez la version du cache** dans `sw.js` :
 
 ```js
-const CACHE = 'lumina-v140';   // → 'lumina-v121', etc.
+const CACHE = 'lumina-v141';   // → 'lumina-v121', etc.
 ```
 
 Sans cela, les téléphones déjà installés continueront d'afficher l'ancienne version.
