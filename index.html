@@ -27,6 +27,26 @@
   }
   html[data-theme="light"] body{ background:radial-gradient(1200px 600px at 50% -10%, #fbf9f4, #e7e2d6); }
   html[data-theme="light"] .ffBox{ background:#efe9db !important; color:#2a2724 !important; }
+
+  .langBtn{
+    position:absolute; top:10px; right:46px; z-index:40;
+    min-width:30px; height:30px; padding:0 7px; border-radius:15px; border:1px solid var(--line);
+    background:var(--surface); color:var(--text); font-size:10.5px; font-weight:800; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; opacity:.75; letter-spacing:.5px;
+  }
+  .langBtn:hover{ opacity:1; }
+  .grw{ transition:background .12s, color .12s; border-radius:3px; padding:0 1px; }
+  .grw.on{ background:var(--accent); color:#252523; font-weight:800; }
+  .grBox{
+    background:var(--bg2); border:1px solid var(--line); border-radius:9px;
+    padding:11px 12px; font-size:13px; line-height:1.95; max-height:130px; overflow-y:auto;
+    font-family:Georgia,"Times New Roman",serif;
+  }
+  .grR{
+    flex:1; text-align:center; font-size:10.5px; padding:6px 0; border-radius:7px;
+    border:1px solid var(--line); background:var(--surface); cursor:pointer; font-weight:700;
+  }
+  .grR.on{ background:var(--accent); color:#252523; border-color:var(--accent); }
   .themeBtn{
     position:absolute; top:10px; right:10px; z-index:40;
     width:30px; height:30px; border-radius:50%; border:1px solid var(--line);
@@ -622,6 +642,7 @@
       </div>
     </div>
 
+    <button class="langBtn" id="langBtn" onclick="cycleLang()" title="Langue / Language / Idioma" aria-label="Changer de langue">FR</button>
     <button class="themeBtn" id="themeBtn" onclick="toggleTheme()" title="Thème clair / sombre" aria-label="Changer de thème">☀️</button>
     <div class="screen" id="s1">
       <div class="scroll">
@@ -665,7 +686,7 @@
           <div id="historyContent" style="margin-top:6px;"></div>
         </div>
 
-        <div class="row"><h2>Classiques réinventés</h2><span class="link">Tout voir ›</span></div>
+        <div class="row"><h2 data-i18n="nav.classics">Classiques réinventés</h2><span class="link">Tout voir ›</span></div>
         <div class="posters">
           <div class="poster" data-book="Le Comte de Monte-Cristo" onclick="selectBook(this)"><img class="cover" src="../covers/monte_cristo.jpg" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxODAiIGhlaWdodD0iMjQwIiB2aWV3Qm94PSIwIDAgMTgwIDI0MCI+CiAgPHJlY3Qgd2lkdGg9IjE4MCIgaGVpZ2h0PSIyNDAiIHJ4PSIxMCIgZmlsbD0iI2M0OWEzYyIvPgogIDxyZWN0IHg9IjEwIiB5PSIxMCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIxNjAiIHJ4PSI4IiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC4xMiIvPgogIDx0ZXh0IHg9IjkwIiB5PSI5NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0id2hpdGUiPkM8L3RleHQ+CiAgPHRleHQgeD0iOTAiIHk9IjE4NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI4LjUiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IndoaXRlIj5MZSBDb210ZSBkZSBNb250ZS1DcmlzdG88L3RleHQ+CiAgPHRleHQgeD0iOTAiIHk9IjIwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI2IiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC44NSI+RHVtYXM8L3RleHQ+CiAgPHRleHQgeD0iOTAiIHk9IjIyMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI1IiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC42Ij5kb21haW5lIHB1YmxpYzwvdGV4dD4KPC9zdmc+'" alt="Le Comte de Monte-Cristo"><div class="cap">Le Comte de Monte-Cristo</div></div>
           <div class="poster" data-book="Dracula" onclick="selectBook(this)"><img class="cover" src="../covers/dracula.jpg" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxODAiIGhlaWdodD0iMjQwIiB2aWV3Qm94PSIwIDAgMTgwIDI0MCI+CiAgPHJlY3Qgd2lkdGg9IjE4MCIgaGVpZ2h0PSIyNDAiIHJ4PSIxMCIgZmlsbD0iIzhiMWExYSIvPgogIDxyZWN0IHg9IjEwIiB5PSIxMCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIxNjAiIHJ4PSI4IiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC4xMiIvPgogIDx0ZXh0IHg9IjkwIiB5PSI5NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0id2hpdGUiPkQ8L3RleHQ+CiAgPHRleHQgeD0iOTAiIHk9IjE4NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI4LjUiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IndoaXRlIj5EcmFjdWxhPC90ZXh0PgogIDx0ZXh0IHg9IjkwIiB5PSIyMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWkiIGZvbnQtc2l6ZT0iNiIgZmlsbD0id2hpdGUiIG9wYWNpdHk9IjAuODUiPlN0b2tlcjwvdGV4dD4KICA8dGV4dCB4PSI5MCIgeT0iMjIwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0ic3lzdGVtLXVpIiBmb250LXNpemU9IjUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjYiPmRvbWFpbmUgcHVibGljPC90ZXh0Pgo8L3N2Zz4='" alt="Dracula"><div class="cap">Dracula</div></div>
@@ -673,7 +694,7 @@
           <div class="poster" data-book="Les Trois Mousquetaires" onclick="selectBook(this)"><img class="cover" src="../covers/mousquetaires.jpg" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxODAiIGhlaWdodD0iMjQwIiB2aWV3Qm94PSIwIDAgMTgwIDI0MCI+CiAgPHJlY3Qgd2lkdGg9IjE4MCIgaGVpZ2h0PSIyNDAiIHJ4PSIxMCIgZmlsbD0iIzFhMWEyZSIvPgogIDxyZWN0IHg9IjEwIiB5PSIxMCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIxNjAiIHJ4PSI4IiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC4xMiIvPgogIDx0ZXh0IHg9IjkwIiB5PSI5NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0id2hpdGUiPk08L3RleHQ+CiAgPHRleHQgeD0iOTAiIHk9IjE4NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI4LjUiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IndoaXRlIj5MZXMgVHJvaXMgTW91c3F1ZXRhaXJlczwvdGV4dD4KICA8dGV4dCB4PSI5MCIgeT0iMjAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0ic3lzdGVtLXVpIiBmb250LXNpemU9IjYiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjg1Ij5EdW1hczwvdGV4dD4KICA8dGV4dCB4PSI5MCIgeT0iMjIwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0ic3lzdGVtLXVpIiBmb250LXNpemU9IjUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjYiPmRvbWFpbmUgcHVibGljPC90ZXh0Pgo8L3N2Zz4='" alt="Les Trois Mousquetaires"><div class="cap">Les Trois Mousquetaires</div></div>
           <div class="poster" data-book="Frankenstein" onclick="selectBook(this)"><img class="cover" src="../covers/frankenstein.jpg" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxODAiIGhlaWdodD0iMjQwIiB2aWV3Qm94PSIwIDAgMTgwIDI0MCI+CiAgPHJlY3Qgd2lkdGg9IjE4MCIgaGVpZ2h0PSIyNDAiIHJ4PSIxMCIgZmlsbD0iIzJkNGEyMiIvPgogIDxyZWN0IHg9IjEwIiB5PSIxMCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIxNjAiIHJ4PSI4IiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC4xMiIvPgogIDx0ZXh0IHg9IjkwIiB5PSI5NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0id2hpdGUiPkY8L3RleHQ+CiAgPHRleHQgeD0iOTAiIHk9IjE4NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI4LjUiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IndoaXRlIj5GcmFua2Vuc3RlaW48L3RleHQ+CiAgPHRleHQgeD0iOTAiIHk9IjIwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI2IiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC44NSI+U2hlbGxleTwvdGV4dD4KICA8dGV4dCB4PSI5MCIgeT0iMjIwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0ic3lzdGVtLXVpIiBmb250LXNpemU9IjUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjYiPmRvbWFpbmUgcHVibGljPC90ZXh0Pgo8L3N2Zz4='" alt="Frankenstein"><div class="cap">Frankenstein</div></div>
         </div>
-        <div class="row"><h2>Aventures &amp; frissons</h2><span class="link">Tout voir ›</span></div>
+        <div class="row"><h2 data-i18n="nav.adventure">Aventures &amp; frissons</h2><span class="link">Tout voir ›</span></div>
         <div class="posters">
           <div class="poster" data-book="Vingt mille lieues sous les mers" onclick="selectBook(this)"><img class="cover" src="../covers/vingt_mille.jpg" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxODAiIGhlaWdodD0iMjQwIiB2aWV3Qm94PSIwIDAgMTgwIDI0MCI+CiAgPHJlY3Qgd2lkdGg9IjE4MCIgaGVpZ2h0PSIyNDAiIHJ4PSIxMCIgZmlsbD0iIzBiNTM5NCIvPgogIDxyZWN0IHg9IjEwIiB5PSIxMCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIxNjAiIHJ4PSI4IiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC4xMiIvPgogIDx0ZXh0IHg9IjkwIiB5PSI5NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0id2hpdGUiPlY8L3RleHQ+CiAgPHRleHQgeD0iOTAiIHk9IjE4NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI4LjUiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IndoaXRlIj5WaW5ndCBtaWxsZSBsaWV1ZXM8L3RleHQ+CiAgPHRleHQgeD0iOTAiIHk9IjIwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI2IiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC44NSI+VmVybmU8L3RleHQ+CiAgPHRleHQgeD0iOTAiIHk9IjIyMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI1IiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC42Ij5kb21haW5lIHB1YmxpYzwvdGV4dD4KPC9zdmc+'" alt="Vingt mille lieues sous les mers"><div class="cap">Vingt mille lieues sous les mers</div></div>
           <div class="poster" data-book="Moby Dick" onclick="selectBook(this)"><img class="cover" src="../covers/moby_dick.jpg" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxODAiIGhlaWdodD0iMjQwIiB2aWV3Qm94PSIwIDAgMTgwIDI0MCI+CiAgPHJlY3Qgd2lkdGg9IjE4MCIgaGVpZ2h0PSIyNDAiIHJ4PSIxMCIgZmlsbD0iIzBhM2Q2MiIvPgogIDxyZWN0IHg9IjEwIiB5PSIxMCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIxNjAiIHJ4PSI4IiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC4xMiIvPgogIDx0ZXh0IHg9IjkwIiB5PSI5NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0id2hpdGUiPk08L3RleHQ+CiAgPHRleHQgeD0iOTAiIHk9IjE4NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI4LjUiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IndoaXRlIj5Nb2J5IERpY2s8L3RleHQ+CiAgPHRleHQgeD0iOTAiIHk9IjIwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI2IiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC44NSI+TWVsdmlsbGU8L3RleHQ+CiAgPHRleHQgeD0iOTAiIHk9IjIyMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI1IiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC42Ij5kb21haW5lIHB1YmxpYzwvdGV4dD4KPC9zdmc+'" alt="Moby Dick"><div class="cap">Moby Dick</div></div>
@@ -684,7 +705,7 @@
           <div class="poster" data-book="Notre-Dame de Paris" onclick="selectBook(this)"><img class="cover" src="../covers/monte_cristo.jpg" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxODAiIGhlaWdodD0iMjQwIiB2aWV3Qm94PSIwIDAgMTgwIDI0MCI+CiAgPHJlY3Qgd2lkdGg9IjE4MCIgaGVpZ2h0PSIyNDAiIHJ4PSIxMCIgZmlsbD0iIzhlNDRhZCIvPgogIDxyZWN0IHg9IjEwIiB5PSIxMCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIxNjAiIHJ4PSI4IiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC4xMiIvPgogIDx0ZXh0IHg9IjkwIiB5PSI5NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0id2hpdGUiPk88L3RleHQ+CiAgPHRleHQgeD0iOTAiIHk9IjE4NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI4LjUiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IndoaXRlIj5Pcmd1ZWlsIGV0IFByw6lqdWfDqXM8L3RleHQ+CiAgPHRleHQgeD0iOTAiIHk9IjIwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI2IiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC44NSI+QXVzdGVuPC90ZXh0PgogIDx0ZXh0IHg9IjkwIiB5PSIyMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWkiIGZvbnQtc2l6ZT0iNSIgZmlsbD0id2hpdGUiIG9wYWNpdHk9IjAuNiI+ZG9tYWluZSBwdWJsaWM8L3RleHQ+Cjwvc3ZnPg=='" alt="Notre-Dame de Paris"><div class="cap">Notre-Dame de Paris</div></div>
         </div>
                 
-        <div class="row" style="margin-top:16px;"><h2>Outils</h2><span class="link" onclick="toggleBottomTools()" style="cursor:pointer;">Afficher ›</span></div>
+        <div class="row" style="margin-top:16px;"><h2 data-i18n="nav.tools">Outils</h2><span class="link" onclick="toggleBottomTools()" style="cursor:pointer;">Afficher ›</span></div>
         <div id="bottomTools" style="display:none;">
 <div class="stats-card" id="statsCard">
           <div style="display:flex; align-items:center; justify-content:space-between;">
@@ -699,7 +720,7 @@
           </div>
           <div style="margin-top:8px; background:var(--bg2); border:1px dashed var(--line); border-radius:8px; padding:8px 10px; font-size:11px; color:var(--muted); text-align:center; line-height:1.4;" id="statDetail">Ajoute un ♡ ou une note pour voir tes stats.</div>
         </div>
-        <div style="text-align:center; margin-top:10px; padding:6px;"><span class="verTag">LUMINA <b id="verTag">v1.1</b> · démo · 0 € engagé</span></div>
+        <div style="text-align:center; margin-top:10px; padding:6px;"><span class="verTag">LUMINA <b id="verTag">v1.2</b> · démo · 0 € engagé</span></div>
           <div class="card" id="exportDataCard" style="margin-top:10px; display:flex; align-items:center; gap:10px; cursor:pointer;" onclick="exportMyData()">
           <div style="width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,var(--accent),#f2cd74); display:flex; align-items:center; justify-content:center; font-size:16px;">📦</div>
           <div style="flex:1;">
@@ -756,7 +777,7 @@
     <!-- 2 IMPORT -->
     <div class="screen" id="s2">
       <div class="scroll">
-        <div class="row" style="margin-top:0;"><h2 style="font-size:17px;">Tourner un livre</h2><span class="link" onclick="go(1)">‹ Retour</span></div>
+        <div class="row" style="margin-top:0;"><h2 style="font-size:17px;" data-i18n="nav.shoot">Tourner un livre</h2><span class="link" onclick="go(1)">‹ Retour</span></div>
         <p style="color:var(--muted); font-size:12px;">Déposez votre fichier ou collez un texte.<br>La vérification des droits se fait toute seule, en coulisses.</p>
         <div class="big">
           <div class="ic">📖</div>
@@ -770,7 +791,7 @@
             <span class="ok">✓ Prêt</span>
           </div>
         </div>
-        <div class="row"><h2>Déjà tournés</h2></div>
+        <div class="row"><h2 data-i18n="nav.already">Déjà tournés</h2></div>
         <div class="episode" data-book="Le Comte de Monte-Cristo" onclick="selectBook(this)" style="cursor:pointer;"><div class="thumb" style="overflow:hidden;"><img src="covers/monte_cristo.jpg" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgMTIwIDE2MCI+CiAgPHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSIxNjAiIHJ4PSI4IiBmaWxsPSIjYzQ5YTNjIi8+CiAgPHJlY3QgeD0iOCIgeT0iOCIgd2lkdGg9IjEwNCIgaGVpZ2h0PSIxMDQiIHJ4PSI2IiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC4xMiIvPgogIDx0ZXh0IHg9IjYwIiB5PSI1MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIyOCIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0id2hpdGUiPk08L3RleHQ+CiAgPHRleHQgeD0iNjAiIHk9IjExOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI3IiBmb250LXdlaWdodD0iODAwIiBmaWxsPSJ3aGl0ZSI+TU9OVEUtQ1JJU1RPPC90ZXh0Pgo8L3N2Zz4='" style="width:100%;height:100%;object-fit:cover;display:block;" alt=""></div><div class="meta">Le Comte de Monte-Cristo<small>Dumas · domaine public</small></div><span class="check">✓</span></div>
         <div class="episode" data-book="Dracula" onclick="selectBook(this)" style="cursor:pointer;"><div class="thumb" style="overflow:hidden;"><img src="covers/dracula.jpg" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgMTIwIDE2MCI+CiAgPHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSIxNjAiIHJ4PSI4IiBmaWxsPSIjOGIxYTFhIi8+CiAgPHJlY3QgeD0iOCIgeT0iOCIgd2lkdGg9IjEwNCIgaGVpZ2h0PSIxMDQiIHJ4PSI2IiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC4xMiIvPgogIDx0ZXh0IHg9IjYwIiB5PSI1MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIyOCIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0id2hpdGUiPkQ8L3RleHQ+CiAgPHRleHQgeD0iNjAiIHk9IjExOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI3IiBmb250LXdlaWdodD0iODAwIiBmaWxsPSJ3aGl0ZSI+RFJBQ1VMQTwvdGV4dD4KPC9zdmc+'" style="width:100%;height:100%;object-fit:cover;display:block;" alt=""></div><div class="meta">Dracula<small>Stoker · domaine public</small></div><span class="check">✓</span></div>
       </div>
@@ -795,7 +816,7 @@
     <!-- 3 ATELIER -->
     <div class="screen" id="s3">
       <div class="scroll">
-        <div class="row" style="margin-top:0;"><h2 style="font-size:17px;">L'Atelier</h2><span class="link" onclick="go(2)">‹ Retour</span></div>
+        <div class="row" style="margin-top:0;"><h2 style="font-size:17px;" data-i18n="nav.atelier">L'Atelier</h2><span class="link" onclick="go(2)">‹ Retour</span></div>
         <div class="bookrow">
           <div class="mini" id="bookMini" style="overflow:hidden;"><img src="covers/monte_cristo.jpg" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgMTIwIDE2MCI+CiAgPHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSIxNjAiIHJ4PSI4IiBmaWxsPSIjYzQ5YTNjIi8+CiAgPHJlY3QgeD0iOCIgeT0iOCIgd2lkdGg9IjEwNCIgaGVpZ2h0PSIxMDQiIHJ4PSI2IiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC4xMiIvPgogIDx0ZXh0IHg9IjYwIiB5PSI1MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIyOCIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0id2hpdGUiPk08L3RleHQ+CiAgPHRleHQgeD0iNjAiIHk9IjExOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI3IiBmb250LXdlaWdodD0iODAwIiBmaWxsPSJ3aGl0ZSI+TU9OVEUtQ1JJU1RPPC90ZXh0Pgo8L3N2Zz4='" style="width:100%;height:100%;object-fit:cover;display:block;" alt=""></div>
           <div>
@@ -804,14 +825,14 @@
           </div>
         </div>
         <!-- === OFFRES FILM / AUDIO / DUO (2026-09-17) === -->
-        <div class="row"><h2>Votre édition</h2><span class="link" onclick="go(8)" style="cursor:pointer;">Voir les formules ›</span></div>
+        <div class="row"><h2 data-i18n="nav.edition">Votre édition</h2><span class="link" onclick="go(8)" style="cursor:pointer;">Voir les formules ›</span></div>
         <div class="offers" id="offers">
           <div class="offer" data-offer="film" onclick="pickOffer(this)"><div class="ico">🎬</div><div class="lab">Film</div><div class="sub">MP4 12 min</div><div class="price">dès 9€</div></div>
           <div class="offer" data-offer="audio" onclick="pickOffer(this)"><div class="ico">🎧</div><div class="lab">Audio</div><div class="sub">MP3 chapitré</div><div class="price">dès 7€</div></div>
           <div class="offer best sel" data-offer="duo" onclick="pickOffer(this)"><span class="badge">le plus choisi</span><div class="ico">🎬+🎧</div><div class="lab">Duo</div><div class="sub">Film + Audio</div><div class="price">dès 12€</div></div>
         </div>
         <div id="voiceBlock">
-          <div class="row" style="margin-bottom:2px;"><h2>Voix de la bande-son</h2><span class="link" onclick="toast('Aperçu voix bientôt')">▶ Aperçu</span></div>
+          <div class="row" style="margin-bottom:2px;"><h2 data-i18n="nav.voice">Voix de la bande-son</h2><span class="link" onclick="toast('Aperçu voix bientôt')">▶ Aperçu</span></div>
           <p style="color:var(--muted);font-size:11.5px;margin-bottom:6px;line-height:1.45;">Séance les yeux fermés — la même histoire, racontée. Choisissez la voix.</p>
           <div class="voices" id="voices">
             <div class="voice sel" data-voice="chaleureuse" onclick="pickVoice(this)"><div class="vico">🗣️</div><div class="vlab">Chaleureuse</div><div class="vsub">féminine</div></div>
@@ -845,7 +866,7 @@
         <div id="filmOpts">
 
         </div>
-        <div class="row"><h2>Direction artistique</h2><span class="link" onclick="openTrailer()">Bande-annonce ›</span></div>
+        <div class="row"><h2 data-i18n="nav.art">Direction artistique</h2><span class="link" onclick="openTrailer()">Bande-annonce ›</span></div>
         <div class="chips" id="styles">
           <div class="chip sel" onclick="pick(this)"><div class="thumb t1" style="overflow:hidden;padding:0;"><img src="covers/style_peint_classique.jpg" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgMTIwIDE2MCI+PHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSIxNjAiIHJ4PSI4IiBmaWxsPSIjYzQ5YTNjIi8+PGNpcmNsZSBjeD0iNjAiIGN5PSI0NSIgcj0iMTgiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjkiLz48cGF0aCBkPSJNIDMwIDg1IFEgNjAgMTA1IDkwIDg1IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiIG9wYWNpdHk9IjAuOCIvPjx0ZXh0IHg9IjYwIiB5PSIxMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWkiIGZvbnQtc2l6ZT0iNy41IiBmb250LXdlaWdodD0iODAwIiBmaWxsPSJ3aGl0ZSI+UGVpbnQgY2xhc3NpcXVlPC90ZXh0Pjwvc3ZnPg=='" style="width:100%;height:100%;object-fit:cover;display:block;" alt=""></div>Peint classique</div>
           <div class="chip" onclick="pick(this)"><div class="thumb t2" style="overflow:hidden;padding:0;"><img src="covers/style_neo_noir.jpg" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgMTIwIDE2MCI+PHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSIxNjAiIHJ4PSI4IiBmaWxsPSIjMWExYTJlIi8+PGNpcmNsZSBjeD0iNjAiIGN5PSI0NSIgcj0iMTgiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjkiLz48cGF0aCBkPSJNIDMwIDg1IFEgNjAgMTA1IDkwIDg1IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiIG9wYWNpdHk9IjAuOCIvPjx0ZXh0IHg9IjYwIiB5PSIxMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWkiIGZvbnQtc2l6ZT0iNy41IiBmb250LXdlaWdodD0iODAwIiBmaWxsPSJ3aGl0ZSI+TsOpby1ub2lyPC90ZXh0Pjwvc3ZnPg=='" style="width:100%;height:100%;object-fit:cover;display:block;" alt=""></div>Néo-noir</div>
@@ -855,7 +876,7 @@
           <div class="chip" onclick="pick(this)"><div class="thumb t6" style="overflow:hidden;padding:0;"><img src="covers/style_bd.jpg" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgMTIwIDE2MCI+PHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSIxNjAiIHJ4PSI4IiBmaWxsPSIjZjRhMjYxIi8+PGNpcmNsZSBjeD0iNjAiIGN5PSI0NSIgcj0iMTgiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjkiLz48cGF0aCBkPSJNIDMwIDg1IFEgNjAgMTA1IDkwIDg1IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiIG9wYWNpdHk9IjAuOCIvPjx0ZXh0IHg9IjYwIiB5PSIxMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWkiIGZvbnQtc2l6ZT0iNy41IiBmb250LXdlaWdodD0iODAwIiBmaWxsPSJ3aGl0ZSI+QkQgZnJhbmNvLWJlbGdlPC90ZXh0Pjwvc3ZnPg=='" style="width:100%;height:100%;object-fit:cover;display:block;" alt=""></div>BD franco-belge</div>
           <div class="chip" onclick="pick(this)"><div class="thumb t7" style="overflow:hidden;padding:0;"><img src="covers/style_gravure.jpg" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgMTIwIDE2MCI+PHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSIxNjAiIHJ4PSI4IiBmaWxsPSIjMmEyYTJhIi8+PGNpcmNsZSBjeD0iNjAiIGN5PSI0NSIgcj0iMTgiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjkiLz48cGF0aCBkPSJNIDMwIDg1IFEgNjAgMTA1IDkwIDg1IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiIG9wYWNpdHk9IjAuOCIvPjx0ZXh0IHg9IjYwIiB5PSIxMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWkiIGZvbnQtc2l6ZT0iNy41IiBmb250LXdlaWdodD0iODAwIiBmaWxsPSJ3aGl0ZSI+R3JhdnVyZTwvdGV4dD48L3N2Zz4='" style="width:100%;height:100%;object-fit:cover;display:block;" alt=""></div>Gravure</div>
         </div>
-        <div class="row"><h2>Format de destination</h2></div>
+        <div class="row"><h2 data-i18n="nav.format">Format de destination</h2></div>
         <div class="seg" id="formats">
           <button class="on" onclick="pickF(this)">9:16 vertical</button>
           <button onclick="pickF(this)">16:9 cinéma</button>
@@ -882,7 +903,7 @@
     <!-- 4 LE TOURNAGE -->
     <div class="screen" id="s4">
       <div class="scroll">
-        <div class="row" style="margin-top:0;"><h2 style="font-size:17px;" id="tournageTitle">🎬 Le tournage</h2><span class="live"><i></i> <span id="tournageLive">EN DIRECT</span></span></div>
+        <div class="row" style="margin-top:0;"><h2 style="font-size:17px;" id="tournageTitle" data-i18n="nav.shooting">🎬 Le tournage</h2><span class="live"><i></i> <span id="tournageLive">EN DIRECT</span></span></div>
         <div id="tournageFilm">
         <div class="slate" id="slate">
           <div class="slate-bar"></div>
@@ -903,14 +924,14 @@
           <span class="rec" id="rec"><i></i>REC</span>
           <span class="tc" id="tc">TC 00:00:00:00</span>
         </div>
-        <div class="row"><h2>Le casting</h2><span class="link" id="castCount">0 / 3</span></div>
+        <div class="row"><h2 data-i18n="nav.cast">Le casting</h2><span class="link" id="castCount">0 / 3</span></div>
         <div class="cast" id="cast">
           <div class="avatar ghost">🧔</div><div class="avatar ghost">👱</div><div class="avatar ghost">👴</div>
         </div>
-        <div class="row"><h2>Le plan de tournage</h2><span class="link">5 scènes</span></div>
+        <div class="row"><h2 data-i18n="nav.plan">Le plan de tournage</h2><span class="link">5 scènes</span></div>
         <div id="scenes"></div>
         <div class="stmsg"><span class="dot"></span><span id="stmsgTxt">On installe le plateau…</span></div>
-        <div class="row"><h2>La pellicule</h2><span class="link">montage en cours</span></div>
+        <div class="row"><h2 data-i18n="nav.reel">La pellicule</h2><span class="link">montage en cours</span></div>
         <div class="filmstrip" id="strip">
           <div class="frame"></div><div class="frame"></div><div class="frame"></div><div class="frame"></div>
           <div class="frame"></div><div class="frame"></div><div class="frame"></div><div class="frame"></div>
@@ -969,7 +990,7 @@
     <!-- 5 LIVRAISON -->
     <div class="screen" id="s5">
       <div class="scroll">
-                <div class="row" style="margin-top:0;"><h2 style="font-size:17px;" id="livTitle">Votre film est prêt 🎉</h2><span class="link" onclick="go(4)">‹ Tournage</span></div>
+                <div class="row" style="margin-top:0;"><h2 style="font-size:17px;" id="livTitle" data-i18n="nav.ready">Votre film est prêt 🎉</h2><span class="link" onclick="go(4)">‹ Tournage</span></div>
         <div style="margin:-4px 0 2px;"><span class="readTime" id="readTime">🎬 durée estimée</span></div>
         <div class="tabs" id="livTabs" style="display:none;">
           <button class="on" id="livTabFilm" onclick="switchLiv('film')">🎬 Le film</button>
@@ -987,7 +1008,7 @@
           <div class="switchrow" style="padding:0 0 10px;"><div class="l">Mode Cinéma<small>ambiance sombre et immersive</small></div><div class="toggle on" onclick="tg(this)"></div></div>
           <div class="switchrow" style="padding:10px 0 0; border-top:1px solid var(--line);"><div class="l">Mode Loupe<small>pleine lumière, pour inspecter</small></div><div class="toggle" onclick="tg(this)"></div></div>
         </div>
-        <div class="row"><h2>Sommaire</h2><span class="link" id="fmtInfo">9:16 · 12 min</span></div>
+        <div class="row"><h2 data-i18n="nav.summary">Sommaire</h2><span class="link" id="fmtInfo">9:16 · 12 min</span></div>
         <div id="sommaireBox"></div>
                 <div class="sync-hint">↔ <span><b>Tap synchro :</b> touche un chapitre côté Film pour sauter côté Audio (et inversement) — même JSON 5 chapitres. Idéal Duo.</span></div>
         <div class="sync-hint">👋 <span><b>Quel pack pour moi ?</b> → <b>iPhone</b> = 1 fichier, <b>Android/voiture</b> = 5 fichiers, <b>publier</b> = son parfait, <b>regarder</b> = le film. Le texte sous chaque carte te dit tout.</span></div>
@@ -1023,6 +1044,24 @@
             <div class="ghost" style="flex:1; margin:0; text-align:center; padding:10px; font-size:12px; display:none;" id="proofDlBtn" onclick="downloadProof()">⬇ Certificat</div>
           </div>
           <div style="font-size:10px; color:var(--muted); text-align:center; margin-top:6px;">SHA256 navigateur · OpenTimestamps (Bitcoin) gratuit plus tard · IPFS CID = hash</div>
+        </div>
+        <div class="card" id="guidedCard" style="margin-top:12px; border-color:var(--accent);">
+          <div style="display:flex; gap:8px; align-items:center;">
+            <div style="width:36px; height:36px; border-radius:10px; background:var(--accent2); display:flex; align-items:center; justify-content:center; font-size:16px; flex:0 0 auto;">📖</div>
+            <div style="flex:1; min-width:0;">
+              <div style="font-weight:800; font-size:12.5px;" data-i18n="gr.title">Lecture guidée</div>
+              <div style="font-size:11px; color:var(--muted); line-height:1.3;" data-i18n="gr.sub">Le texte se surligne mot à mot pendant la lecture. Idéal pour apprendre à lire.</div>
+            </div>
+            <span style="font-size:10px; font-weight:800; color:var(--accent); border:1px solid var(--accent); border-radius:999px; padding:3px 7px;">#5</span>
+          </div>
+          <div class="grBox" id="grText" style="margin-top:9px;"></div>
+          <div style="display:flex; gap:6px; margin-top:8px; align-items:center;">
+            <span style="font-size:10px; color:var(--muted); font-weight:700;" data-i18n="gr.speed">Vitesse</span>
+            <div class="grR" id="grR07" onclick="setGuidedRate(0.7)">0,7×</div>
+            <div class="grR on" id="grR1" onclick="setGuidedRate(1)">1×</div>
+            <div class="grR" id="grR13" onclick="setGuidedRate(1.3)">1,3×</div>
+          </div>
+          <div class="ghost" id="grBtn" style="margin:9px 0 0; padding:10px; text-align:center; font-size:11px; cursor:pointer; font-weight:800;" onclick="startGuided()" data-i18n="gr.start">▶ Démarrer la lecture guidée</div>
         </div>
         <div class="card" id="ficheCard" style="border-color:var(--accent); background:linear-gradient(135deg,var(--surface2),var(--surface)); margin-top:12px;">
           <div style="display:flex; gap:10px; align-items:center;">
@@ -1146,15 +1185,15 @@
     <!-- 6 DIFFUSER -->
     <div class="screen" id="s6">
       <div class="scroll">
-        <div class="row" style="margin-top:0;"><h2 style="font-size:17px;">Diffuser votre film</h2><span class="link" onclick="go(5)">‹ Film</span></div>
+        <div class="row" style="margin-top:0;"><h2 style="font-size:17px;" data-i18n="nav.broadcast">Diffuser votre film</h2><span class="link" onclick="go(5)">‹ Film</span></div>
         <div class="tabs" id="diffTabs" style="display:none;"><button class="on" id="diffTabFilm" onclick="switchDiff('film')">🎬 Scènes film</button><button id="diffTabAudio" onclick="switchDiff('audio')">🎧 Extraits audio</button></div>
-        <div class="row"><h2>Format de diffusion</h2></div>
+        <div class="row"><h2 data-i18n="nav.diffFormat">Format de diffusion</h2></div>
         <div class="seg" id="shareF">
           <button class="on" onclick="pickF(this)">Reel 9:16</button>
           <button onclick="pickF(this)">YouTube 16:9</button>
           <button onclick="pickF(this)">Carrousel</button>
         </div>
-        <div class="row"><h2>Les scènes</h2><span class="link" id="diffCount">6 scènes</span></div>
+        <div class="row"><h2 data-i18n="nav.scenes">Les scènes</h2><span class="link" id="diffCount">6 scènes</span></div>
                 <div class="card" style="border-color:var(--accent); background:linear-gradient(135deg,rgba(232,182,76,.08),var(--surface)); margin-top:12px;">
           <div style="display:flex; gap:8px; align-items:center;">
             <div style="font-size:20px;">🔒🎓</div>
@@ -1182,6 +1221,20 @@
           <div class="expBtn" onclick="doExport('zip')"><b>🎁 Duo complet</b><small>Film + Audio + pochette</small></div>
         </div>
         <div class="ffBox" style="margin-top:10px;"><b>Pipeline Duo :</b> même découpage 5 chapitres → MP4 (200 Mo) + M4B/ZIP ACX (120 Mo). Étalonnage R41 cuit + loudnorm -19 LUFS. Une seule attente.</div>
+        <div class="card" id="galleryCard" style="margin-top:12px;">
+          <div style="display:flex; gap:8px; align-items:center;">
+            <div style="width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,var(--accent),#f2cd74); display:flex; align-items:center; justify-content:center; font-size:16px; flex:0 0 auto;">🖼️</div>
+            <div style="flex:1; min-width:0;">
+              <div style="font-weight:800; font-size:12.5px;" data-i18n="gal.title">Galerie publique</div>
+              <div style="font-size:11px; color:var(--muted); line-height:1.3;" data-i18n="gal.sub">Les livres-films partagés par la communauté. Cliquez pour ouvrir.</div>
+            </div>
+          </div>
+          <div id="galleryList" style="margin-top:8px;"></div>
+          <div style="display:flex; gap:8px; margin-top:10px;">
+            <div class="ghost" style="flex:1.5; margin:0; padding:10px; text-align:center; font-size:11px; cursor:pointer; background:var(--accent); color:#252523; font-weight:800; border-color:var(--accent);" onclick="publishToGallery()" data-i18n="gal.share">🔗 Publier mon film dans la galerie</div>
+            <div class="ghost" style="flex:.6; margin:0; padding:10px; text-align:center; font-size:11px; cursor:pointer;" onclick="shareGallery()">📤</div>
+          </div>
+        </div>
         <div class="card" id="mkCard" style="margin-top:12px; border-color:var(--accent); background:linear-gradient(135deg,rgba(232,182,76,.08),var(--surface));">
           <div style="display:flex; gap:8px; align-items:center;">
             <div style="width:36px; height:36px; border-radius:10px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:16px; flex:0 0 auto;">📣</div>
@@ -1260,7 +1313,7 @@
     <!-- 7 CINEMATHEQUE -->
     <div class="screen" id="s7">
       <div class="scroll">
-                <div class="row" style="margin-top:0;"><h2 style="font-size:17px;">La Cinémathèque</h2><span class="link">⚙︎</span></div>
+                <div class="row" style="margin-top:0;"><h2 style="font-size:17px;" data-i18n="nav.cinema">La Cinémathèque</h2><span class="link">⚙︎</span></div>
         <div class="tabs" id="cineTabs"><button class="on" id="cineTabFilm" onclick="switchCine('film')">🎬 Vos films (12)</button><button id="cineTabAudio" onclick="switchCine('audio')">🎧 Vos audios (8)</button></div>
         <div id="cineFilm">
         <div class="stat">
@@ -1268,7 +1321,7 @@
           <div><b>8,4k</b><span>vues cumulées</span></div>
           <div><b>3</b><span>diffusions</span></div>
         </div>
-        <div class="row"><h2>Vos films</h2><span class="link">Tout voir ›</span></div>
+        <div class="row"><h2 data-i18n="nav.yourFilms">Vos films</h2><span class="link">Tout voir ›</span></div>
         <div class="posters">
           <div class="poster" data-book="Le Comte de Monte-Cristo" onclick="selectBook(this)"><img class="cover" src="../covers/monte_cristo.jpg" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxODAiIGhlaWdodD0iMjQwIiB2aWV3Qm94PSIwIDAgMTgwIDI0MCI+CiAgPHJlY3Qgd2lkdGg9IjE4MCIgaGVpZ2h0PSIyNDAiIHJ4PSIxMCIgZmlsbD0iI2M0OWEzYyIvPgogIDxyZWN0IHg9IjEwIiB5PSIxMCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIxNjAiIHJ4PSI4IiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC4xMiIvPgogIDx0ZXh0IHg9IjkwIiB5PSI5NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0id2hpdGUiPkM8L3RleHQ+CiAgPHRleHQgeD0iOTAiIHk9IjE4NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI4LjUiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IndoaXRlIj5MZSBDb210ZSBkZSBNb250ZS1DcmlzdG88L3RleHQ+CiAgPHRleHQgeD0iOTAiIHk9IjIwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI2IiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC44NSI+RHVtYXM8L3RleHQ+CiAgPHRleHQgeD0iOTAiIHk9IjIyMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI1IiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC42Ij5kb21haW5lIHB1YmxpYzwvdGV4dD4KPC9zdmc+'" alt="Le Comte de Monte-Cristo"><div class="cap">Le Comte de Monte-Cristo</div></div>
           <div class="poster" data-book="Dracula" onclick="selectBook(this)"><img class="cover" src="../covers/dracula.jpg" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxODAiIGhlaWdodD0iMjQwIiB2aWV3Qm94PSIwIDAgMTgwIDI0MCI+CiAgPHJlY3Qgd2lkdGg9IjE4MCIgaGVpZ2h0PSIyNDAiIHJ4PSIxMCIgZmlsbD0iIzhiMWExYSIvPgogIDxyZWN0IHg9IjEwIiB5PSIxMCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIxNjAiIHJ4PSI4IiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC4xMiIvPgogIDx0ZXh0IHg9IjkwIiB5PSI5NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0id2hpdGUiPkQ8L3RleHQ+CiAgPHRleHQgeD0iOTAiIHk9IjE4NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI4LjUiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IndoaXRlIj5EcmFjdWxhPC90ZXh0PgogIDx0ZXh0IHg9IjkwIiB5PSIyMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWkiIGZvbnQtc2l6ZT0iNiIgZmlsbD0id2hpdGUiIG9wYWNpdHk9IjAuODUiPlN0b2tlcjwvdGV4dD4KICA8dGV4dCB4PSI5MCIgeT0iMjIwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0ic3lzdGVtLXVpIiBmb250LXNpemU9IjUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjYiPmRvbWFpbmUgcHVibGljPC90ZXh0Pgo8L3N2Zz4='" alt="Dracula"><div class="cap">Dracula</div></div>
@@ -1286,7 +1339,7 @@
             <div><b>19h</b><span>d'écoute</span></div>
             <div><b>64</b><span>chapitres</span></div>
           </div>
-          <div class="row"><h2>Vos livres audio</h2><span class="link">Tout voir ›</span></div>
+          <div class="row"><h2 data-i18n="nav.yourAudio">Vos livres audio</h2><span class="link">Tout voir ›</span></div>
           <div class="posters">
             <div class="poster p1" onclick="toast('Lecture audio — démo')"><div class="art">🎧</div><div class="cap">Monte-Cristo<br><span style="font-size:9px;opacity:.8;">🎙️ Chaleureuse · 2h41</span></div></div>
             <div class="poster p2" onclick="toast('Lecture audio — démo')"><div class="art">🎧</div><div class="cap">Dracula<br><span style="font-size:9px;opacity:.8;">🎙️ Grave · 1h52</span></div></div>
@@ -1324,7 +1377,7 @@
     <!-- 8 FORMULES -->
     <div class="screen" id="s8">
       <div class="scroll">
-        <div class="row" style="margin-top:0;"><h2 style="font-size:17px;">Nos formules</h2><span class="link" onclick="go(1)">‹ Accueil</span></div>
+        <div class="row" style="margin-top:0;"><h2 style="font-size:17px;" data-i18n="nav.plans">Nos formules</h2><span class="link" onclick="go(1)">‹ Accueil</span></div>
         <p style="color:var(--muted);font-size:12px;line-height:1.5;">Un même texte, trois vies possibles. <b style="color:var(--text);">Votre livre, à regarder ou à écouter.</b></p>
         <div style="margin-top:10px;background:var(--surface);border:1px solid var(--accent);border-radius:14px;padding:12px;">
           <div style="font-size:11px;font-weight:800;letter-spacing:0.6px;color:var(--accent);">🧩 QUEL PACK POUR MOI ? — LE RÉBUS</div>

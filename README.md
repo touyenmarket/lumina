@@ -4,13 +4,23 @@
 
 Application PWA de LUMINA — votre roman devient un film, dans le style de votre choix.
 
-> **Version `v1.1`** — 22 septembre 2026
+> **Version `v1.2`** — 22 septembre 2026
 > 100 % statique : HTML / CSS / JS purs. **Aucune dépendance, aucun build, aucun serveur.**
 > Phase actuelle : interface complète et navigable. Le moteur de génération d'images n'est pas encore branché.
 
 ---
 
-## 🆕 Nouveautés v1.1 — 5 innovations TIER A (0 €)
+## 🆕 Nouveautés v1.2 (0 €)
+
+| | Nouveauté |
+|---|---|
+| 🌍 | **Interface en 3 langues** — Français / English / Español, bouton `FR` en haut à droite, préférence mémorisée. 45 libellés traduits, la voix off suit la langue choisie. |
+| 🖼️ | **Galerie publique** — publiez vos livres-films, retrouvez-les dans une liste avec jaquette, style et compteur de vues. Un clic rouvre le film. |
+| 📖 | **Lecture guidée** — le texte se surligne **mot à mot** pendant la lecture vocale, avec 3 vitesses (0,7× / 1× / 1,3×). Pensé pour l'apprentissage de la lecture et les lecteurs dyslexiques. |
+
+---
+
+## Nouveautés v1.1 — 5 innovations TIER A (0 €)
 
 | | Nouveauté |
 |---|---|
@@ -129,6 +139,9 @@ Une fois en ligne, contrôlez ces 5 points :
 - [ ] Revenir à l'accueil : la ligne **Reprendre** affiche la **jaquette** du livre
 - [ ] **v1.1** — Écran **Diffuser** : bouton **📣 Télécharger le kit complet** → un ZIP de 5 fichiers arrive
 - [ ] **v1.1** — Bouton **☀️/🌙** en haut à droite : bascule clair/sombre, conservée après rechargement
+- [ ] **v1.2** — Bouton **FR** en haut à droite : bascule FR → EN → ES, les titres changent de langue
+- [ ] **v1.2** — Écran **La pellicule** : carte **Lecture guidée**, le texte se surligne mot à mot
+- [ ] **v1.2** — Écran **Diffuser** : **Publier dans la galerie**, le film apparaît dans la liste
 
 Si les styles apparaissent en carrés de couleur : le dossier `covers/` n'a pas été poussé sur GitHub.
 
@@ -145,7 +158,7 @@ L'installation PWA (bouton 📲) et le service worker exigent le **HTTPS**. Verc
 À chaque modification de `index.html` ou `app.js`, **incrémentez la version du cache** dans `sw.js` :
 
 ```js
-const CACHE = 'lumina-v110';   // → 'lumina-v111', etc.
+const CACHE = 'lumina-v120';   // → 'lumina-v121', etc.
 ```
 
 Sans cela, les téléphones déjà installés continueront d'afficher l'ancienne version.
@@ -160,4 +173,4 @@ Quand le moteur sera connecté, Supabase servira pour l'**authentification**, le
 
 ---
 
-*LUMINA v1.1 — 22 septembre 2026 — 0 € d'infrastructure engagé*
+*LUMINA v1.2 — 22 septembre 2026 — 0 € d'infrastructure engagé*
