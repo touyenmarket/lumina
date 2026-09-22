@@ -19,6 +19,27 @@
     --accent:#e8b64c; --accent2:#b3242e; --text:#f2ede3; --muted:#9a9588;
     --line:#3a3a37; --ok:#3fbf6b;
   }
+
+  html[data-theme="light"]{
+    --bg:#f4f1ea; --bg2:#eae6dc; --surface:#fffdf8; --surface2:#f0ece2;
+    --accent:#b8860b; --accent2:#9e1f28; --text:#2a2724; --muted:#6b665c;
+    --line:#d8d2c4; --ok:#2e9355;
+  }
+  html[data-theme="light"] body{ background:radial-gradient(1200px 600px at 50% -10%, #fbf9f4, #e7e2d6); }
+  html[data-theme="light"] .ffBox{ background:#efe9db !important; color:#2a2724 !important; }
+  .themeBtn{
+    position:absolute; top:10px; right:10px; z-index:40;
+    width:30px; height:30px; border-radius:50%; border:1px solid var(--line);
+    background:var(--surface); color:var(--text); font-size:13px; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; opacity:.75;
+  }
+  .themeBtn:hover{ opacity:1; }
+  .verTag{ font-size:9px; color:var(--muted); opacity:.6; letter-spacing:.5px; }
+  .readTime{
+    display:inline-block; font-size:10.5px; color:var(--accent); font-weight:700;
+    border:1px solid var(--line); border-radius:999px; padding:3px 9px; margin-top:6px;
+    background:var(--surface);
+  }
   *{box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent;}
   html,body{height:100%;}
   body{
@@ -601,6 +622,7 @@
       </div>
     </div>
 
+    <button class="themeBtn" id="themeBtn" onclick="toggleTheme()" title="Thème clair / sombre" aria-label="Changer de thème">☀️</button>
     <div class="screen" id="s1">
       <div class="scroll">
         <div class="row" style="margin-top:0;"><div class="brand"><span class="clap">🎬</span> LUMINA</div><div style="display:flex; gap:8px;"><button class="iconbtn" onclick="toggleDyslexia()" title="Mode dyslexie & accessibilité" id="btnA11y" style="border-color:var(--accent);">♿</button><button class="iconbtn" onclick="installApp()" title="Installer l'app">📲</button><div class="avatar-sm">👤</div></div></div>
@@ -677,7 +699,8 @@
           </div>
           <div style="margin-top:8px; background:var(--bg2); border:1px dashed var(--line); border-radius:8px; padding:8px 10px; font-size:11px; color:var(--muted); text-align:center; line-height:1.4;" id="statDetail">Ajoute un ♡ ou une note pour voir tes stats.</div>
         </div>
-        <div class="card" id="exportDataCard" style="margin-top:10px; display:flex; align-items:center; gap:10px; cursor:pointer;" onclick="exportMyData()">
+        <div style="text-align:center; margin-top:10px; padding:6px;"><span class="verTag">LUMINA <b id="verTag">v1.1</b> · démo · 0 € engagé</span></div>
+          <div class="card" id="exportDataCard" style="margin-top:10px; display:flex; align-items:center; gap:10px; cursor:pointer;" onclick="exportMyData()">
           <div style="width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,var(--accent),#f2cd74); display:flex; align-items:center; justify-content:center; font-size:16px;">📦</div>
           <div style="flex:1;">
             <div style="font-weight:800; font-size:12px;">Exporter mes données</div>
@@ -947,6 +970,7 @@
     <div class="screen" id="s5">
       <div class="scroll">
                 <div class="row" style="margin-top:0;"><h2 style="font-size:17px;" id="livTitle">Votre film est prêt 🎉</h2><span class="link" onclick="go(4)">‹ Tournage</span></div>
+        <div style="margin:-4px 0 2px;"><span class="readTime" id="readTime">🎬 durée estimée</span></div>
         <div class="tabs" id="livTabs" style="display:none;">
           <button class="on" id="livTabFilm" onclick="switchLiv('film')">🎬 Le film</button>
           <button id="livTabAudio" onclick="switchLiv('audio')">🎧 La bande-son</button>
@@ -1158,6 +1182,38 @@
           <div class="expBtn" onclick="doExport('zip')"><b>🎁 Duo complet</b><small>Film + Audio + pochette</small></div>
         </div>
         <div class="ffBox" style="margin-top:10px;"><b>Pipeline Duo :</b> même découpage 5 chapitres → MP4 (200 Mo) + M4B/ZIP ACX (120 Mo). Étalonnage R41 cuit + loudnorm -19 LUFS. Une seule attente.</div>
+        <div class="card" id="mkCard" style="margin-top:12px; border-color:var(--accent); background:linear-gradient(135deg,rgba(232,182,76,.08),var(--surface));">
+          <div style="display:flex; gap:8px; align-items:center;">
+            <div style="width:36px; height:36px; border-radius:10px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:16px; flex:0 0 auto;">📣</div>
+            <div style="flex:1; min-width:0;">
+              <div style="font-weight:800; font-size:12.5px;">Kit marketing — 0€ · tout prêt</div>
+              <div style="font-size:11px; color:var(--muted); line-height:1.3;">Une affiche, un visuel vertical, votre 4e de couverture et 3 posts prêts à publier. En un clic.</div>
+            </div>
+            <span style="font-size:10px; font-weight:800; color:var(--accent); border:1px solid var(--accent); border-radius:999px; padding:3px 7px;">#12</span>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:9px;">
+            <span style="font-size:10px; background:var(--surface2); border:1px solid var(--line); border-radius:999px; padding:3px 8px;">🖼️ Affiche Instagram</span>
+            <span style="font-size:10px; background:var(--surface2); border:1px solid var(--line); border-radius:999px; padding:3px 8px;">📱 Visuel TikTok</span>
+            <span style="font-size:10px; background:var(--surface2); border:1px solid var(--line); border-radius:999px; padding:3px 8px;">📖 4e de couverture</span>
+            <span style="font-size:10px; background:var(--surface2); border:1px solid var(--line); border-radius:999px; padding:3px 8px;">💬 3 posts</span>
+            <span style="font-size:10px; background:var(--surface2); border:1px solid var(--line); border-radius:999px; padding:3px 8px;">🎤 Pitch 30 s</span>
+          </div>
+          <div id="mkPreview" style="display:none; margin-top:10px;"></div>
+          <div style="display:flex; gap:8px; margin-top:10px;">
+            <div class="ghost" style="flex:1; margin:0; padding:10px; text-align:center; font-size:11px; cursor:pointer;" onclick="previewPoster()">👁️ Voir l'affiche</div>
+            <div class="ghost" id="mkBtn" style="flex:1.4; margin:0; padding:10px; text-align:center; font-size:11px; cursor:pointer; background:var(--accent); color:#252523; font-weight:800; border-color:var(--accent);" onclick="downloadMarketingKit()">📣 Télécharger le kit complet</div>
+          </div>
+        </div>
+        <div class="card" id="giftCard" style="margin-top:12px;">
+          <div style="display:flex; gap:8px; align-items:center;">
+            <div style="width:36px; height:36px; border-radius:10px; background:var(--accent2); display:flex; align-items:center; justify-content:center; font-size:16px; flex:0 0 auto;">🎁</div>
+            <div style="flex:1; min-width:0;">
+              <div style="font-weight:800; font-size:12.5px;">Offrir ce livre-film</div>
+              <div style="font-size:11px; color:var(--muted); line-height:1.3;">Un message tout prêt avec le lien — par SMS, WhatsApp ou e-mail.</div>
+            </div>
+          </div>
+          <div class="ghost" style="margin:10px 0 0; padding:10px; text-align:center; font-size:11px; cursor:pointer;" onclick="giftFilm()">🎁 Offrir à quelqu'un</div>
+        </div>
         <div class="card" id="embedCard" style="margin-top:12px; border-color:var(--accent); background:linear-gradient(135deg,rgba(232,182,76,.08),var(--surface));">
           <div style="display:flex; gap:8px; align-items:center;">
             <div style="width:36px; height:36px; border-radius:10px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:16px; flex:0 0 auto;">🔗</div>

@@ -4,13 +4,25 @@
 
 Application PWA de LUMINA — votre roman devient un film, dans le style de votre choix.
 
-> **Version `v1.0-demo`** — figée le 22 septembre 2026
+> **Version `v1.1`** — 22 septembre 2026
 > 100 % statique : HTML / CSS / JS purs. **Aucune dépendance, aucun build, aucun serveur.**
 > Phase actuelle : interface complète et navigable. Le moteur de génération d'images n'est pas encore branché.
 
 ---
 
-## 🆕 Nouveautés de cette version
+## 🆕 Nouveautés v1.1 — 5 innovations TIER A (0 €)
+
+| | Nouveauté |
+|---|---|
+| 📣 | **Kit marketing en un clic** — ZIP contenant une affiche 1080×1350 (Instagram), un visuel 1080×1920 (TikTok/Reels), votre 4ᵉ de couverture, 3 posts prêts à publier et un pitch de 30 s. Images générées à la volée depuis la jaquette du livre. |
+| 🎁 | **Mode cadeau** — offrir un livre-film par SMS, WhatsApp ou e-mail, avec un message tout prêt |
+| ⏱️ | **Minuteur de lecture** — « 43 min de film · 1 h 14 en audio », calculé selon le nombre de chapitres |
+| ☀️🌙 | **Thème clair / sombre** — bascule en haut à droite, mémorisée |
+| 🏷️ | **Numéro de version affiché** dans les outils |
+
+---
+
+## Nouveautés v1.0
 
 | | Nouveauté |
 |---|---|
@@ -115,6 +127,8 @@ Une fois en ligne, contrôlez ces 5 points :
 - [ ] Écran **L'Atelier** → **Direction artistique** : les 7 styles montrent de **vraies images** (château peint, rue de nuit, manga, aquarelle, forêt, BD, gravure) — et non des carrés de couleur
 - [ ] Le bouton **📲 Installer l'app** apparaît sur mobile
 - [ ] Revenir à l'accueil : la ligne **Reprendre** affiche la **jaquette** du livre
+- [ ] **v1.1** — Écran **Diffuser** : bouton **📣 Télécharger le kit complet** → un ZIP de 5 fichiers arrive
+- [ ] **v1.1** — Bouton **☀️/🌙** en haut à droite : bascule clair/sombre, conservée après rechargement
 
 Si les styles apparaissent en carrés de couleur : le dossier `covers/` n'a pas été poussé sur GitHub.
 
@@ -131,7 +145,7 @@ L'installation PWA (bouton 📲) et le service worker exigent le **HTTPS**. Verc
 À chaque modification de `index.html` ou `app.js`, **incrémentez la version du cache** dans `sw.js` :
 
 ```js
-const CACHE = 'lumina-v100';   // → 'lumina-v101', etc.
+const CACHE = 'lumina-v110';   // → 'lumina-v111', etc.
 ```
 
 Sans cela, les téléphones déjà installés continueront d'afficher l'ancienne version.
@@ -146,4 +160,4 @@ Quand le moteur sera connecté, Supabase servira pour l'**authentification**, le
 
 ---
 
-*LUMINA v1.0-demo — 22 septembre 2026 — 0 € d'infrastructure engagé*
+*LUMINA v1.1 — 22 septembre 2026 — 0 € d'infrastructure engagé*
