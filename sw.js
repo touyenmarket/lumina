@@ -2,7 +2,7 @@
    v1.0-demo — 22/09/2026
    ⚠️ À CHAQUE MISE À JOUR : incrémenter CACHE ci-dessous (lumina-v100 → lumina-v101…)
       sinon les téléphones gardent l'ancienne version en cache. */
-const CACHE = 'lumina-v131';
+const CACHE = 'lumina-v140';
 
 const ASSETS = [
   './',

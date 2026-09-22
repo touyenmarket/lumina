@@ -4,13 +4,48 @@
 
 Application PWA de LUMINA — votre roman devient un film, dans le style de votre choix.
 
-> **Version `v1.2`** — 22 septembre 2026
-> 100 % statique : HTML / CSS / JS purs. **Aucune dépendance, aucun build, aucun serveur.**
-> Phase actuelle : interface complète et navigable. Le moteur de génération d'images n'est pas encore branché.
+> **Version `v1.4`** — 22 septembre 2026
+> 100 % statique : HTML / CSS / JS purs. **Aucune dépendance, aucun build.**
+> **Backend optionnel** : comptes et synchronisation multi-appareils via Supabase (palier gratuit). Sans configuration, l'app reste intégralement locale et hors-ligne.
+> Le moteur de génération d'images n'est pas encore branché.
 
 ---
 
-## 🆕 Nouveautés v1.2 (0 €)
+## 🆕 Nouveautés v1.4 (0 €)
+
+| Fonction | Ce que ça change |
+|---|---|
+| 📦 **Coffre à films** | Conservez vos films en ligne, récupérez-les depuis n'importe quel appareil |
+| 📊 **Quota visible** | Barre de progression : espace utilisé / 50 Mo offerts |
+| 🛡️ **Double garde-fou** | Limite appliquée côté app **et** côté serveur (déclencheur PostgreSQL) |
+| 🔐 **Coffre privé** | 4 règles : personne n'accède au dossier d'un autre |
+
+**Installation (~5 min) :** exécuter `supabase-storage.sql` — voir `GUIDE_STOCKAGE_v1.4.md`
+
+> ⚠️ **Le trafic sortant (5 Go/mois) est la vraie limite**, pas l'espace. Un film de 30 Mo téléchargé 170 fois épuise le quota mensuel. À surveiller dans Supabase → Reports.
+
+---
+
+## Nouveautés v1.3 (0 €)
+
+| Fonction | Ce que ça change |
+|---|---|
+| ☁️ **Comptes utilisateurs** | Inscription, connexion, lien magique par e-mail |
+| 🔄 **Synchronisation multi-appareils** | Favoris, notes et progression suivent l'utilisateur — **validé sur 2 appareils** |
+| 🌍 **Galerie partagée** | Table commune à tous les utilisateurs, lecture publique |
+| 🔐 **Row Level Security** | 8 politiques : chacun n'accède qu'à ses propres données |
+
+**Activation (facultative, ~15 min, 0 €) :** voir `GUIDE_SUPABASE_v1.3.md`
+1. Créer un projet sur [supabase.com](https://supabase.com) (palier gratuit, sans carte bancaire)
+2. Exécuter `supabase-schema.sql` dans le SQL Editor
+3. Copier `config.example.js` en `config.js` et y mettre vos deux clés
+
+> ⚠️ `config.js` **doit être versionné** pour que Vercel le déploie. La clé `anon` est publique par conception ; ce sont les règles RLS qui protègent les données. Ne jamais exposer la clé `service_role`.
+> ⚠️ Un projet Supabase gratuit est **mis en pause après 7 jours sans activité** (réveil en un clic, aucune perte).
+
+---
+
+## Nouveautés v1.2 (0 €)
 
 | | Nouveauté |
 |---|---|
@@ -86,7 +121,7 @@ git status
 
 # 4. Publiez
 git add -A
-git commit -m "LUMINA v1.0-demo — 7 styles illustrés, historique avec jaquettes, architecture allégée"
+git commit -m "LUMINA v1.3.1 — comptes Supabase, synchronisation multi-appareils, galerie partagée"
 git push
 ```
 
@@ -158,7 +193,7 @@ L'installation PWA (bouton 📲) et le service worker exigent le **HTTPS**. Verc
 À chaque modification de `index.html` ou `app.js`, **incrémentez la version du cache** dans `sw.js` :
 
 ```js
-const CACHE = 'lumina-v120';   // → 'lumina-v121', etc.
+const CACHE = 'lumina-v140';   // → 'lumina-v121', etc.
 ```
 
 Sans cela, les téléphones déjà installés continueront d'afficher l'ancienne version.
