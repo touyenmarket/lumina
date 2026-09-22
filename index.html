@@ -346,7 +346,7 @@
   #trailer.paused .end,#trailer.paused .track i,#trailer.paused .grain,#trailer.paused .flicker,#trailer.paused .tbadge{animation-play-state:paused;}
 
   .hint{
-    position:absolute; bottom:66px; left:50%; transform:translateX(-50%);
+    position:absolute; bottom:calc(80px + env(safe-area-inset-bottom)); left:50%; transform:translateX(-50%);
     background:rgba(20,20,18,.92); border:1px solid var(--line); color:var(--muted);
     font-size:11px; padding:6px 12px; border-radius:999px; white-space:nowrap; z-index:15; pointer-events:none;
     transition:opacity .3s; opacity:0;
@@ -531,6 +531,10 @@
 #bottomTools.on{display:block;}
 
   /* === FIX NAV v37 — toujours visible === */
+  /* === FIX NAV v1.4.3 — la vraie cause : la barre de l'accueil était IMBRIQUÉE dans
+     <div class="scroll">. Un élément "sticky" placé dans une zone qui défile ne peut pas
+     rester au bas de l'écran : il flottait au milieu du contenu. La barre est maintenant
+     un frère de .scroll (enfant direct de .screen), collée au bas par le flex. === */
   .phone{overflow:hidden;}
   .screen{overflow:hidden; display:flex; flex-direction:column;}
   .scroll{flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch; padding-bottom:8px;}
@@ -721,7 +725,7 @@
           </div>
           <div style="margin-top:8px; background:var(--bg2); border:1px dashed var(--line); border-radius:8px; padding:8px 10px; font-size:11px; color:var(--muted); text-align:center; line-height:1.4;" id="statDetail">Ajoute un ♡ ou une note pour voir tes stats.</div>
         </div>
-        <div style="text-align:center; margin-top:10px; padding:6px;"><span class="verTag">LUMINA <b id="verTag">v1.4.2</b> · démo · 0 € engagé</span></div>
+        <div style="text-align:center; margin-top:10px; padding:6px;"><span class="verTag">LUMINA <b id="verTag">v1.4.3</b> · démo · 0 € engagé</span></div>
           <div class="card" id="accountCard" style="margin-top:10px; border-color:var(--accent);">
             <div style="display:flex; gap:8px; align-items:center;">
               <div style="width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,var(--accent),#f2cd74); display:flex; align-items:center; justify-content:center; font-size:16px; flex:0 0 auto;">☁️</div>
@@ -785,6 +789,8 @@
         </div>
 <div style="height:8px;"></div>
       </div>
+      
+    </div>
       <div class="nav">
         <button class="active" onclick="go(1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Accueil</button>
         <button onclick="go(2)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8l4 4-4 4"/></svg>Tourner</button>
@@ -792,7 +798,6 @@
         <button onclick="go(5)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/></svg>Film</button>
         <button onclick="go(7)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-3 4.5-4.5 8-4.5s6.5 1.5 8 4.5"/></svg>Cinémathèque</button>
       </div>
-    </div>
     </div>
 
     <!-- 2 IMPORT -->
